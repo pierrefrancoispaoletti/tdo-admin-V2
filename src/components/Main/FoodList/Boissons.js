@@ -54,8 +54,9 @@ const Boissons = ({
         name="hidden"
         active={category === 'hidden'}
         onClick={(e, { name }) => setCategory(name)}
+        icon
       >
-        Cachées
+        <Icon name="hide" />
       </Menu.Item>
     </Menu>
     <Divider hidden />

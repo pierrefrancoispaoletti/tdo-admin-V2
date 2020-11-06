@@ -41,7 +41,7 @@ const Cichetteria = ({
         active={category === 'hidden'}
         onClick={(e, { name }) => setCategory(name)}
       >
-        Cachées
+        <Icon name="hide" />
       </Menu.Item>
     </Menu>
     <Divider hidden />

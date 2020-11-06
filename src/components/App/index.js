@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import {
   Dimmer, Divider, Image, Loader, Segment,
 } from 'semantic-ui-react';
+import { Route } from 'react-router-dom';
 import PostTypeSelector from '../../Containers/PostTypeSelector/PostTypeSelector';
 import Title from '../Title/Title';
 import { postTypes } from '../../datas/posttypes';
 import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
+import Footer from '../../Containers/Footer/Footer';
 import Login from '../../Containers/Login/Login';
 
 // == Import
@@ -31,8 +32,13 @@ const App = ({ isLoading }) => (
       <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
     </Segment>
     )}
-    {!isLoading && <Main />}
-    <Divider />
+    {!isLoading
+    && (
+    <Route path="/">
+      <Main />
+    </Route>
+    )}
+    <Divider section />
     <Footer />
   </div>
 );

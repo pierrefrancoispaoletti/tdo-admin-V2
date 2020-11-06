@@ -168,3 +168,31 @@ export const openEditModal = (disheObject) => ({
 });
 
 /** -------------------------------------------------------- */
+
+/**             **\
+ * POST LIST CONTROL  *
+ */
+
+export const TOGGLE_POST_TYPE_LIST = 'TOGGLE_POST_TYPE_LIST';
+
+export const togglePostTypeList = () => ({
+  type: TOGGLE_POST_TYPE_LIST,
+});
+
+/** -------------------------------------------------------- */
+
+/**             **\
+ * SEARCH CONTROL  *
+ */
+
+export const GET_USER_SEARCH_INPUT = 'GET_USER_SEARCH_INPUT';
+export const SEARCH_FUNCTION = 'SEARCH_FUNCTION';
+
+export const getUserSearchInput = (userSearchInput) => ({
+  type: GET_USER_SEARCH_INPUT,
+  userSearchInput,
+});
+
+export const searchFunction = () => ({
+  type: SEARCH_FUNCTION,
+});

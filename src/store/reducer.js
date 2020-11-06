@@ -15,6 +15,9 @@ import {
   SET_POST_ERROR,
   SET_DISHE_TO_PRIVATE,
   OPEN_EDIT_MODAL,
+  TOGGLE_POST_TYPE_LIST,
+  GET_USER_SEARCH_INPUT,
+  SEARCH_FUNCTION,
 } from '../actions/Tdo';
 import categories from '../datas/categories';
 import { convertCategoryNameToId } from '../utils/utils';
@@ -24,6 +27,8 @@ const initialState = {
   userInputPassword: '',
   logError: false,
   postError: false,
+
+  showPostTypeList: false,
 
   dishesCategory: '',
 
@@ -62,11 +67,37 @@ const initialState = {
   isLogged: false,
 
   isLoading: false,
+  userSearchInput: '',
 };
 
 function reducer(state = initialState, action = {}) {
   const newState = { ...state };
   switch (action.type) {
+    case TOGGLE_POST_TYPE_LIST:
+      newState.showPostTypeList = !newState.showPostTypeList;
+      break;
+    case GET_USER_SEARCH_INPUT:
+      newState.userSearchInput = action.userSearchInput;
+      break;
+    case SEARCH_FUNCTION:
+      {
+        newState.dishesToLoad = [];
+        const newArrayAllDishes = [...newState.allDishes];
+        const arrayToPush = [...newState.dishesToLoad];
+
+        const searchWordInArray = () => {
+          for (let i = 0; i < newArrayAllDishes.length; i += 1) {
+            const element = newArrayAllDishes[i];
+            if ((element.title.rendered.toLowerCase()).includes(newState.userSearchInput)) {
+              arrayToPush.push(element);
+            }
+          }
+          return [...arrayToPush];
+        };
+        newState.dishesToLoad = searchWordInArray();
+        newState.userSearchInput = '';
+      }
+      break;
     case GET_USER_LOGIN:
       switch (action.identifier) {
         case 'login':

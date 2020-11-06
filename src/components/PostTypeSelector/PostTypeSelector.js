@@ -8,17 +8,21 @@ import AddModal from '../../Containers/AddModal/AddModal';
 import DeleteModal from '../../Containers/DeleteModal/DeleteModal';
 import EditModal from '../../Containers/EditModal/EditModal';
 
+import './posttypeselector.scss';
+
 const PostTypeSelector = ({
   postTypes,
   getDishes,
   loadDishes,
   openAddModal,
+  togglePostTypeList,
+  showPostTypeList,
 }) => (
-  <Container>
+  <Container textAlign="center">
     <AddModal />
     <DeleteModal />
     <EditModal />
-    <List celled>
+    <List celled className={!showPostTypeList ? 'posttype_List--hidden' : 'posttype_List'}>
       {postTypes.map((postType) => (
         <List.Item key={postType.slug}>
           <List.Content floated="right">
@@ -51,17 +55,19 @@ const PostTypeSelector = ({
               </Button>
             </Link>
           </List.Content>
-          <List.Icon name="arrow right" />
           <List.Content>
             <List.Header>{postType.name}</List.Header>
           </List.Content>
         </List.Item>
       ))}
     </List>
+    <Button color="green" icon={showPostTypeList ? { name: 'hide' } : { name: 'eye' }} onClick={() => (togglePostTypeList())} />
   </Container>
 );
 
 PostTypeSelector.propTypes = {
+  showPostTypeList: PropTypes.bool.isRequired,
+  togglePostTypeList: PropTypes.func.isRequired,
   getDishes: PropTypes.func.isRequired,
   loadDishes: PropTypes.func.isRequired,
   openAddModal: PropTypes.func.isRequired,
