@@ -10,6 +10,7 @@ import {
   Message,
   Modal,
   Radio,
+  Transition,
 } from 'semantic-ui-react';
 import { errorMessages } from '../../datas/messages';
 
@@ -32,20 +33,21 @@ const EditModal = ({
   prepareDishesToBePoster,
   editDisheToRESTApi,
 }) => (
-  <Modal open={openModal}>
-    <Modal.Header>Editer " {disheName} " </Modal.Header>
-    <Modal.Content>
-      <Form
-        error={postError}
-        onSubmit={(e) => {
-          e.preventDefault();
-          prepareDishesToBePoster();
-          // @TODO ajouter un error handller ou modifier l'existant
-          // je penche vers l'ajout d'un nouveau
-          editDisheToRESTApi();
-        }}
-      >
-        {postError
+  <Transition visible={openModal} animation="fly down" duration={600}>
+    <Modal open={openModal}>
+      <Modal.Header>Editer " {disheName} " </Modal.Header>
+      <Modal.Content>
+        <Form
+          error={postError}
+          onSubmit={(e) => {
+            e.preventDefault();
+            prepareDishesToBePoster();
+            // @TODO ajouter un error handller ou modifier l'existant
+            // je penche vers l'ajout d'un nouveau
+            editDisheToRESTApi();
+          }}
+        >
+          {postError
               && (
                 <Message
                   error
@@ -53,33 +55,33 @@ const EditModal = ({
                   content={errorMessages.postError.content}
                 />
               )}
-        <Form.Field>
-          <label htmlFor="disheName">
-            Nom
-          </label>
-          <Input
-            id="disheName"
-            placeholder="Marguerite..."
-            value={disheName}
-            onChange={(e) => {
-              getDishesInfoToAdd(e.target.id, e.target.value);
-            }}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="disheDescription">
-            Ingrédients / Description / Millésime
-          </label>
-          <Input
-            id="disheDescription"
-            placeholder="tomate, anchois..."
-            value={disheDescription.replace(/(<([^>]+)>)/gi, '')}
-            onChange={(e) => {
-              getDishesInfoToAdd(e.target.id, e.target.value);
-            }}
-          />
-        </Form.Field>
-        {currentDisheName === 'Vins'
+          <Form.Field>
+            <label htmlFor="disheName">
+              Nom
+            </label>
+            <Input
+              id="disheName"
+              placeholder="Marguerite..."
+              value={disheName}
+              onChange={(e) => {
+                getDishesInfoToAdd(e.target.id, e.target.value);
+              }}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor="disheDescription">
+              Ingrédients / Description / Millésime
+            </label>
+            <Input
+              id="disheDescription"
+              placeholder="tomate, anchois..."
+              value={disheDescription.replace(/(<([^>]+)>)/gi, '')}
+              onChange={(e) => {
+                getDishesInfoToAdd(e.target.id, e.target.value);
+              }}
+            />
+          </Form.Field>
+          {currentDisheName === 'Vins'
               && (
                 <>
                   <Form.Field>
@@ -167,22 +169,22 @@ const EditModal = ({
                   </Form.Group>
                 </>
               )}
-        <Form.Field>
-          <label htmlFor="dishePrice">
-            Prix
-          </label>
-          <Input
-            value={dishePrice}
-            id="dishePrice"
-            label={{ basic: true, content: '€' }}
-            labelPosition="right"
-            placeholder="12"
-            onChange={(e) => {
-              getDishesInfoToAdd(e.target.id, e.target.value);
-            }}
-          />
-        </Form.Field>
-        {currentDisheName === 'Pizze'
+          <Form.Field>
+            <label htmlFor="dishePrice">
+              Prix
+            </label>
+            <Input
+              value={dishePrice}
+              id="dishePrice"
+              label={{ basic: true, content: '€' }}
+              labelPosition="right"
+              placeholder="12"
+              onChange={(e) => {
+                getDishesInfoToAdd(e.target.id, e.target.value);
+              }}
+            />
+          </Form.Field>
+          {currentDisheName === 'Pizze'
               && (
                 <Form.Group grouped>
                   <label>Catégorie</label>
@@ -204,7 +206,7 @@ const EditModal = ({
                   />
                 </Form.Group>
               )}
-        {currentDisheName === 'Cichetteria'
+          {currentDisheName === 'Cichetteria'
               && (
                 <Form.Group grouped>
                   <label>Catégorie</label>
@@ -226,7 +228,7 @@ const EditModal = ({
                   />
                 </Form.Group>
               )}
-        {currentDisheName === 'Boissons'
+          {currentDisheName === 'Boissons'
               && (
                 <Form.Group grouped>
                   <label>Catégorie</label>
@@ -264,25 +266,26 @@ const EditModal = ({
                   />
                 </Form.Group>
               )}
-        <Divider />
-        <Form.Group>
-          <Button.Group>
-            <Button color="red" icon labelPosition="right" onClick={() => closeModal()}>
-              <Icon name="cancel" />
-              Annuler
-            </Button>
-            <Button
-              tyoe="submit"
-              content="Editer"
-              labelPosition="right"
-              icon="write"
-              positive
-            />
-          </Button.Group>
-        </Form.Group>
-      </Form>
-    </Modal.Content>
-  </Modal>
+          <Divider />
+          <Form.Group>
+            <Button.Group>
+              <Button type="button" color="red" icon labelPosition="right" onClick={() => closeModal()}>
+                <Icon name="cancel" />
+                Annuler
+              </Button>
+              <Button
+                tyoe="submit"
+                content="Editer"
+                labelPosition="right"
+                icon="write"
+                positive
+              />
+            </Button.Group>
+          </Form.Group>
+        </Form>
+      </Modal.Content>
+    </Modal>
+  </Transition>
 );
 
 EditModal.propTypes = {

@@ -8,8 +8,6 @@ import AddModal from '../../Containers/AddModal/AddModal';
 import DeleteModal from '../../Containers/DeleteModal/DeleteModal';
 import EditModal from '../../Containers/EditModal/EditModal';
 
-import './posttypeselector.scss';
-
 const PostTypeSelector = ({
   postTypes,
   getDishes,
@@ -25,7 +23,6 @@ const PostTypeSelector = ({
     <Transition visible={showPostTypeList} animation="slide up" duration={400}>
       <List
         celled
-        // className={!showPostTypeList ? 'posttype_List--hidden' : 'posttype_List'}
       >
         {postTypes.map((postType) => (
           <List.Item key={postType.slug}>
