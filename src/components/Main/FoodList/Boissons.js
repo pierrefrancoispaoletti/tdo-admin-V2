@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Card, Container, Divider, Icon, Menu,
+  Button,
+  Card,
+  Container,
+  Divider,
+  Icon,
+  Menu,
 } from 'semantic-ui-react';
 
 const Boissons = ({
@@ -14,55 +19,58 @@ const Boissons = ({
   setDisheToPrivateInRestApi,
 }) => (
   <Container textAlign="center" fluid>
-    <Menu compact size="mini">
-      <Menu.Item
-        name="All"
-        active={category === 'All'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        Tous
-      </Menu.Item>
-      <Menu.Item
-        name="Alcools"
-        active={category === 'Alcools'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        Alcools
-      </Menu.Item>
-      <Menu.Item
-        name="Bières"
-        active={category === 'Bières'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        Bières
-      </Menu.Item>
-      <Menu.Item
-        name="Spiritueux"
-        active={category === 'Spiritueux'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        Spiritueux
-      </Menu.Item>
-      <Menu.Item
-        name="zdivers"
-        active={category === 'zdivers'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        Divers
-      </Menu.Item>
-      <Menu.Item
-        name="hidden"
-        active={category === 'hidden'}
-        onClick={(e, { name }) => setCategory(name)}
-        icon
-      >
-        <Icon name="hide" />
-      </Menu.Item>
-    </Menu>
+    {drinks.length > 0 && drinks[0].type === 'Boissons' && (
+      <Menu compact size="mini">
+        <Menu.Item
+          name="All"
+          active={category === 'All'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          Tous
+        </Menu.Item>
+
+        <Menu.Item
+          name="Alcools"
+          active={category === 'Alcools'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          Alcools
+        </Menu.Item>
+        <Menu.Item
+          name="Bières"
+          active={category === 'Bières'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          Bières
+        </Menu.Item>
+        <Menu.Item
+          name="Spiritueux"
+          active={category === 'Spiritueux'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          Spiritueux
+        </Menu.Item>
+        <Menu.Item
+          name="zdivers"
+          active={category === 'zdivers'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          Divers
+        </Menu.Item>
+        <Menu.Item
+          name="hidden"
+          active={category === 'hidden'}
+          onClick={(e, { name }) => setCategory(name)}
+          icon
+        >
+          <Icon name="hide" />
+        </Menu.Item>
+      </Menu>
+    )}
     <Divider hidden />
     <Card.Group stackable>
       {drinks.map((drink) => (
-        <Card key={`${drink.id}cicchetti`}>
+        <Card key={drink.id}>
           <Card.Content>
             <Card.Header>{drink.title.rendered}</Card.Header>
             <Card.Meta>{drink.categories}</Card.Meta>
@@ -73,7 +81,12 @@ const Boissons = ({
           </Card.Content>
           <Card.Content extra textAlign="center">
             <Button.Group size="mini">
-              <Button color="green" icon labelPosition="left" onClick={() => openEditModal({ ...drink })}>
+              <Button
+                color="green"
+                icon
+                labelPosition="left"
+                onClick={() => openEditModal({ ...drink })}
+              >
                 <Icon name="write" />
                 Modifier
               </Button>

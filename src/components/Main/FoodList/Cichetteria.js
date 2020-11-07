@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Card, Container, Divider, Icon, Menu,
+  Button,
+  Card,
+  Container,
+  Divider,
+  Icon,
+  Menu,
 } from 'semantic-ui-react';
 
 const Cichetteria = ({
@@ -14,40 +19,44 @@ const Cichetteria = ({
   setDisheToPrivateInRestApi,
 }) => (
   <Container textAlign="center">
-    <Menu compact size="mini">
-      <Menu.Item
-        name="All"
-        active={category === 'All'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        Tous
-      </Menu.Item>
-      <Menu.Item
-        name="A la carte de soir"
-        active={category === 'A la carte de soir'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        Ce Soir
-      </Menu.Item>
-      <Menu.Item
-        name="Le coin de la Truffe"
-        active={category === 'Le coin de la Truffe'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        La Truffe
-      </Menu.Item>
-      <Menu.Item
-        name="hidden"
-        active={category === 'hidden'}
-        onClick={(e, { name }) => setCategory(name)}
-      >
-        <Icon name="hide" />
-      </Menu.Item>
-    </Menu>
+    {dishes.length > 0 && dishes[0].type === 'Cichetteria' && (
+      <Menu compact size="mini">
+        <Menu.Item
+          name="All"
+          active={category === 'All'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          Tous
+        </Menu.Item>
+
+        <Menu.Item
+          name="A la carte de soir"
+          active={category === 'A la carte de soir'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          Ce Soir
+        </Menu.Item>
+        <Menu.Item
+          name="Le coin de la Truffe"
+          active={category === 'Le coin de la Truffe'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          La Truffe
+        </Menu.Item>
+
+        <Menu.Item
+          name="hidden"
+          active={category === 'hidden'}
+          onClick={(e, { name }) => setCategory(name)}
+        >
+          <Icon name="hide" />
+        </Menu.Item>
+      </Menu>
+    )}
     <Divider hidden />
     <Card.Group stackable>
       {dishes.map((dishe) => (
-        <Card key={`${dishe.id}cicchetti`}>
+        <Card key={dishe.id}>
           <Card.Content>
             <Card.Header>{dishe.title.rendered}</Card.Header>
             <Card.Meta>{dishe.categories}</Card.Meta>
@@ -58,7 +67,12 @@ const Cichetteria = ({
           </Card.Content>
           <Card.Content extra textAlign="center">
             <Button.Group size="mini">
-              <Button color="green" icon labelPosition="left" onClick={() => openEditModal({ ...dishe })}>
+              <Button
+                color="green"
+                icon
+                labelPosition="left"
+                onClick={() => openEditModal({ ...dishe })}
+              >
                 <Icon name="write" />
                 Modifier
               </Button>
