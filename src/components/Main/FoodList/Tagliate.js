@@ -33,7 +33,7 @@ const Tagliate = ({
     <Divider hidden />
     <Card.Group stackable>
       {dishes.map((dishe) => (
-        <Card key={dishe.slug}>
+        <Card key={dishe.id}>
           <Card.Content>
             <Card.Header>{dishe.title.rendered}</Card.Header>
             <Card.Meta>{dishe.categories}</Card.Meta>
@@ -53,7 +53,7 @@ const Tagliate = ({
                 icon
                 labelPosition="left"
                 onClick={() => {
-                  setDisheToPrivate(dishe.id, dishe.status);
+                  setDisheToPrivate(dishe.id, dishe.status, dishe.slug);
                   setDisheToPrivateInRestApi();
                 }}
               >
@@ -64,7 +64,7 @@ const Tagliate = ({
                 color="red"
                 icon
                 labelPosition="left"
-                onClick={() => openDeleteModal(dishe.title.rendered, dishe.id)}
+                onClick={() => openDeleteModal(dishe.title.rendered, dishe.id, dishe.slug)}
               >
                 <Icon name="trash alternate" />
                 Supprimer

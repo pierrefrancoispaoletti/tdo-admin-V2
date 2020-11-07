@@ -47,7 +47,7 @@ const Cichetteria = ({
     <Divider hidden />
     <Card.Group stackable>
       {dishes.map((dishe) => (
-        <Card key={`${dishe.slug}cicchetti`}>
+        <Card key={`${dishe.id}cicchetti`}>
           <Card.Content>
             <Card.Header>{dishe.title.rendered}</Card.Header>
             <Card.Meta>{dishe.categories}</Card.Meta>
@@ -67,7 +67,7 @@ const Cichetteria = ({
                 icon
                 labelPosition="left"
                 onClick={() => {
-                  setDisheToPrivate(dishe.id, dishe.status);
+                  setDisheToPrivate(dishe.id, dishe.status, dishe.slug);
                   setDisheToPrivateInRestApi();
                 }}
               >
@@ -78,7 +78,7 @@ const Cichetteria = ({
                 color="red"
                 icon
                 labelPosition="left"
-                onClick={() => openDeleteModal(dishe.title.rendered, dishe.id)}
+                onClick={() => openDeleteModal(dishe.title.rendered, dishe.id, dishe.slug)}
               >
                 <Icon name="trash alternate" />
                 Supprimer

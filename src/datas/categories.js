@@ -28,7 +28,7 @@ const categories = [
     id: '31',
   },
   {
-    name: 'A la carte ce soir',
+    name: 'A la carte de soir',
     id: '29',
   },
 ];

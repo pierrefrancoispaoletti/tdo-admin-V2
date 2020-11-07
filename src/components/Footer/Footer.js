@@ -9,7 +9,6 @@ const Footer = ({ userSearchInput, getUserSearchInput, searchFunction }) => (
     <Form onSubmit={(e) => {
       e.preventDefault();
       searchFunction();
-      console.log('prevented');
     }}
     >
       <Input
@@ -23,7 +22,7 @@ const Footer = ({ userSearchInput, getUserSearchInput, searchFunction }) => (
           color: 'teal',
           inverted: true,
         }}
-        placeholder="Rechercher dans la page..."
+        placeholder="Rechercher par intitulé / ingrédients..."
       />
     </Form>
   </footer>

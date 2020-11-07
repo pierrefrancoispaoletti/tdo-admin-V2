@@ -54,7 +54,7 @@ const Vins = ({
     <Divider hidden />
     <Card.Group stackable>
       {wines.map((wine) => (
-        <Card key={wine.slug}>
+        <Card key={wine.id}>
           <Card.Content>
             <Card.Header>{wine.title.rendered}</Card.Header>
             <Card.Description>
@@ -82,7 +82,7 @@ const Vins = ({
                 icon
                 labelPosition="left"
                 onClick={() => {
-                  setDisheToPrivate(wine.id, wine.status);
+                  setDisheToPrivate(wine.id, wine.status, wine.slug);
                   setDisheToPrivateInRestApi();
                 }}
               >
@@ -93,7 +93,7 @@ const Vins = ({
                 color="red"
                 icon
                 labelPosition="left"
-                onClick={() => openDeleteModal(wine.title.rendered, wine.id)}
+                onClick={() => openDeleteModal(wine.title.rendered, wine.id, wine.slug)}
               >
                 <Icon name="trash alternate" />
                 Supprimer

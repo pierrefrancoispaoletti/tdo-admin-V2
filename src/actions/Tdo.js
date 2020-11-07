@@ -103,10 +103,11 @@ export const prepareDishesToBePoster = () => ({
   type: PREPARE_DISHES_TO_BE_POSTED,
 });
 
-export const setDisheToPrivate = (disheId, disheStatus) => ({
+export const setDisheToPrivate = (disheId, disheStatus, disheSlug) => ({
   type: SET_DISHE_TO_PRIVATE,
   disheId,
   disheStatus,
+  disheSlug,
 });
 
 export const setDisheToPrivateInRestApi = () => ({
@@ -152,10 +153,12 @@ export const openAddModal = (disheName) => ({
   name: disheName,
 });
 
-export const openDeleteModal = (disheName, disheId) => ({
+export const openDeleteModal = (disheName, disheId, disheSlug) => ({
   type: OPEN_DELETE_MODAL,
   name: disheName,
   id: disheId,
+  disheSlug,
+
 });
 
 export const closeModal = () => ({
@@ -187,6 +190,7 @@ export const togglePostTypeList = () => ({
 
 export const GET_USER_SEARCH_INPUT = 'GET_USER_SEARCH_INPUT';
 export const SEARCH_FUNCTION = 'SEARCH_FUNCTION';
+export const SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS';
 
 export const getUserSearchInput = (userSearchInput) => ({
   type: GET_USER_SEARCH_INPUT,
@@ -195,4 +199,8 @@ export const getUserSearchInput = (userSearchInput) => ({
 
 export const searchFunction = () => ({
   type: SEARCH_FUNCTION,
+});
+
+export const setSearchResults = () => ({
+  type: SET_SEARCH_RESULTS,
 });

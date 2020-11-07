@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Dimmer, Divider, Image, Loader, Segment,
+  Dimmer, Divider, Loader, Segment,
 } from 'semantic-ui-react';
 import { Route } from 'react-router-dom';
 import PostTypeSelector from '../../Containers/PostTypeSelector/PostTypeSelector';
@@ -27,9 +27,8 @@ const App = ({ isLoading }) => (
     && (
     <Segment placeholder color="teal">
       <Dimmer active>
-        <Loader>Loading</Loader>
+        <Loader>Chargement en cours</Loader>
       </Dimmer>
-      <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
     </Segment>
     )}
     {!isLoading

@@ -17,7 +17,7 @@ import {
   OPEN_EDIT_MODAL,
   TOGGLE_POST_TYPE_LIST,
   GET_USER_SEARCH_INPUT,
-  SEARCH_FUNCTION,
+  SET_SEARCH_RESULTS,
 } from '../actions/Tdo';
 import categories from '../datas/categories';
 import { convertCategoryNameToId } from '../utils/utils';
@@ -79,7 +79,7 @@ function reducer(state = initialState, action = {}) {
     case GET_USER_SEARCH_INPUT:
       newState.userSearchInput = action.userSearchInput;
       break;
-    case SEARCH_FUNCTION:
+    case SET_SEARCH_RESULTS:
       {
         newState.dishesToLoad = [];
         const newArrayAllDishes = [...newState.allDishes];
@@ -88,7 +88,11 @@ function reducer(state = initialState, action = {}) {
         const searchWordInArray = () => {
           for (let i = 0; i < newArrayAllDishes.length; i += 1) {
             const element = newArrayAllDishes[i];
-            if ((element.title.rendered.toLowerCase()).includes(newState.userSearchInput)) {
+            if (
+              (element.title.rendered.toLowerCase()).includes(newState.userSearchInput)
+            || (element.content.rendered.toLowerCase()).includes(newState.userSearchInput)
+            || ((element.type.toLowerCase()).includes(newState.userSearchInput))
+            ) {
               arrayToPush.push(element);
             }
           }
@@ -210,7 +214,18 @@ function reducer(state = initialState, action = {}) {
       newState.isOpenAddModal = true;
       break;
     case OPEN_EDIT_MODAL: {
+      newState.disheName = '';
+      newState.disheDescription = '';
+      newState.dishePrice = '';
+      newState.disheCategory = '';
+      newState.wineRegion = '';
+      newState.wineContent = '';
+      newState.wineColorRed = '';
+      newState.wineColorWhite = '';
+      newState.wineColorRose = '';
       newState.disheObject = action.disheObject;
+      newState.currentDisheName = action.disheObject.type;
+      newState.dishesCategory = action.disheObject.slug;
       newState.isOpenEditModal = true;
       newState.disheId = action.disheObject.id;
       newState.disheName = action.disheObject.title.rendered;
@@ -233,6 +248,7 @@ function reducer(state = initialState, action = {}) {
     case OPEN_DELETE_MODAL:
       newState.disheId = action.id;
       newState.disheNameToDelete = action.name;
+      newState.dishesCategory = action.disheSlug;
       newState.isOpenDeleteModal = true;
       break;
     case CLOSE_MODAL:
@@ -321,6 +337,7 @@ function reducer(state = initialState, action = {}) {
       newState.postError = action.postErrorBool;
       break;
     case SET_DISHE_TO_PRIVATE:
+      newState.dishesCategory = action.disheSlug;
       newState.disheId = action.disheId;
       newState.disheStatus = action.disheStatus;
       break;

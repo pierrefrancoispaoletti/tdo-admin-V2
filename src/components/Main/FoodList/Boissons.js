@@ -62,7 +62,7 @@ const Boissons = ({
     <Divider hidden />
     <Card.Group stackable>
       {drinks.map((drink) => (
-        <Card key={`${drink.slug}cicchetti`}>
+        <Card key={`${drink.id}cicchetti`}>
           <Card.Content>
             <Card.Header>{drink.title.rendered}</Card.Header>
             <Card.Meta>{drink.categories}</Card.Meta>
@@ -82,7 +82,7 @@ const Boissons = ({
                 icon
                 labelPosition="left"
                 onClick={() => {
-                  setDisheToPrivate(drink.id, drink.status);
+                  setDisheToPrivate(drink.id, drink.status, drink.slug);
                   setDisheToPrivateInRestApi();
                 }}
               >
@@ -93,7 +93,7 @@ const Boissons = ({
                 color="red"
                 icon
                 labelPosition="left"
-                onClick={() => openDeleteModal(drink.title.rendered, drink.id)}
+                onClick={() => openDeleteModal(drink.title.rendered, drink.id, drink.slug)}
               >
                 <Icon name="trash alternate" />
                 Supprimer

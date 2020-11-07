@@ -6,7 +6,7 @@ import authMiddleware from '../Middleware/authMiddleware';
 import loadDishesMiddleware from '../Middleware/loadDishesMiddleware';
 import deleteDishToRestApiMiddleware from '../Middleware/deleteDishToRestApiMiddleware';
 import editDishToRestApiMiddleware from '../Middleware/editDishToRestApiMiddleware';
-// import searchMiddleware from '../Middleware/searchMiddleware';
+import searchMiddleware from '../Middleware/searchMiddleware';
 import reducer from './reducer';
 
 const enhancers = composeWithDevTools(
@@ -16,7 +16,7 @@ const enhancers = composeWithDevTools(
     addDishToRestApiMiddleware,
     deleteDishToRestApiMiddleware,
     editDishToRestApiMiddleware,
-    // searchMiddleware,
+    searchMiddleware,
     loadDishesMiddleware,
   ),
 );
