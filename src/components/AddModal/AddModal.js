@@ -11,6 +11,8 @@ import {
   Radio,
   Transition,
 } from 'semantic-ui-react';
+import categories from '../../datas/categories';
+
 import { errorMessages } from '../../datas/messages';
 
 const AddModal = ({
@@ -179,16 +181,16 @@ const AddModal = ({
                 id="Classiques"
                 control={Radio}
                 label="Les Classiques"
-                value="9"
-                checked={disheCategory === '9'}
+                value={categories[0].id}
+                checked={disheCategory === categories[0].id}
                 onChange={(e) => getDishesInfoToAdd(e.target.id, e.target.value)}
               />
               <Form.Field
                 id="Créatives"
                 control={Radio}
                 label="Les Créatives"
-                value="11"
-                checked={disheCategory === '11'}
+                value={categories[1].id}
+                checked={disheCategory === categories[1].id}
                 onChange={(e) => getDishesInfoToAdd(e.target.id, e.target.value)}
               />
             </Form.Group>
@@ -200,16 +202,16 @@ const AddModal = ({
                 id="Ce Soir"
                 control={Radio}
                 label="Ce Soir"
-                value="29"
-                checked={disheCategory === '29'}
+                value={categories[7].id}
+                checked={disheCategory === categories[7].id}
                 onChange={(e) => getDishesInfoToAdd(e.target.id, e.target.value)}
               />
               <Form.Field
                 id="La Truffe"
                 control={Radio}
                 label="La Truffe"
-                value="31"
-                checked={disheCategory === '31'}
+                value={categories[6].id}
+                checked={disheCategory === categories[6].id}
                 onChange={(e) => getDishesInfoToAdd(e.target.id, e.target.value)}
               />
             </Form.Group>
@@ -221,32 +223,32 @@ const AddModal = ({
                 id="Alcools"
                 control={Radio}
                 label="Alcools"
-                value="5"
-                checked={disheCategory === '5'}
+                value={categories[2].id}
+                checked={disheCategory === categories[2].id}
                 onChange={(e) => getDishesInfoToAdd(e.target.id, e.target.value)}
               />
               <Form.Field
                 id="Bières"
                 control={Radio}
                 label="Bières"
-                value="7"
-                checked={disheCategory === '7'}
+                value={categories[3].id}
+                checked={disheCategory === categories[3].id}
                 onChange={(e) => getDishesInfoToAdd(e.target.id, e.target.value)}
               />
               <Form.Field
                 id="Spiritueux"
                 control={Radio}
                 label="Spiritueux"
-                value="13"
-                checked={disheCategory === '13'}
+                value={categories[4].id}
+                checked={disheCategory === categories[4].id}
                 onChange={(e) => getDishesInfoToAdd(e.target.id, e.target.value)}
               />
               <Form.Field
                 id="Divers"
                 control={Radio}
                 label="Divers"
-                value="17"
-                checked={disheCategory === '17'}
+                value={categories[5].id}
+                checked={disheCategory === categories[5].id}
                 onChange={(e) => getDishesInfoToAdd(e.target.id, e.target.value)}
               />
             </Form.Group>

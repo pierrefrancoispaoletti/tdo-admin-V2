@@ -20,8 +20,7 @@ const addDishToRestApiMiddleware = (store) => (next) => (action) => {
               headers: { Authorization: `Bearer ${token}` },
               params: dishesInfosToAdd,
             })
-              .then((response) => {
-                console.log(response.data);
+              .then(() => {
                 store.dispatch(closeModal());
                 store.dispatch(loadDishes());
               })
