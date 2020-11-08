@@ -11,6 +11,7 @@ import { postTypes } from '../../datas/posttypes';
 import Main from '../Main/Main';
 import Footer from '../../Containers/Footer/Footer';
 import Login from '../../Containers/Login/Login';
+import ErrorOrSuccessMessage from '../../Containers/ErrorOrSuccessMessage/ErrorOrSuccessMessage';
 
 // == Import
 // import './styles.css';
@@ -20,6 +21,7 @@ const App = ({ isLoading }) => (
   <div className="app">
     <Login />
     <Title />
+    <ErrorOrSuccessMessage />
     <Divider />
     <PostTypeSelector postTypes={postTypes} />
     <Divider />

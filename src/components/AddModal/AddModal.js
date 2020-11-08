@@ -52,7 +52,9 @@ const AddModal = ({
               content={errorMessages.postError.content}
             />
           )}
-          <Form.Field>
+          <Form.Field
+            error={postError && disheName === ''}
+          >
             <label htmlFor="disheName">Nom</label>
             <Input
               id="disheName"
@@ -63,7 +65,9 @@ const AddModal = ({
               }}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field
+            error={postError && disheDescription === ''}
+          >
             <label htmlFor="disheDescription">
               Ingrédients / Description / Millésime
             </label>

@@ -4,10 +4,13 @@ import {
   loadDishes,
   userLogged,
   closeModal,
+  setIfPostingIsError,
+  setIfPostingIsSuccess,
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
 import { baseUri, jsonUrl, verifyToken } from '../utils/utils';
+import { errorMessages, successMessages } from '../datas/messages';
 
 const editDishToRestApiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -27,10 +30,10 @@ const editDishToRestApiMiddleware = (store) => (next) => (action) => {
           })
             .then(() => {
               store.dispatch(loadDishes());
+              store.dispatch(setIfPostingIsSuccess(true, successMessages[0].editSuccess));
             })
-            .catch((error) => {
-              // eslint-disable-next-line no-console
-              console.warn(error);
+            .catch(() => {
+              store.dispatch(setIfPostingIsError(true, errorMessages[0].editingError));
             }),
         )
         .catch(() => store.dispatch(userLogged()));
@@ -55,8 +58,16 @@ const editDishToRestApiMiddleware = (store) => (next) => (action) => {
             .then(() => {
               store.dispatch(loadDishes());
               store.dispatch(closeModal());
+              /*
+                ajouter un message de succes avec un time out pour signifier
+                que l'edition a été réalisés avec succés
+                */
             })
             .catch((error) => {
+              /*
+                ajouter un message d'erreur avec un time out pour signifier
+               qu'il y a eu un probleme lors de l'edition
+                */
               // eslint-disable-next-line no-console
               console.warn(error);
             }),

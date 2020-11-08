@@ -39,6 +39,8 @@ export const registerToken = (token) => ({
 export const LOGIN_FORM_ERROR = 'LOGIN_FORM_ERROR';
 export const POSTIN_FORM_ERROR = 'POSTIN_FORM_ERROR';
 export const SET_POST_ERROR = 'SET_POST_ERROR';
+export const SET_IF_POSTING_IS_SUCCESS = 'SET_IF_POSTING_IS_SUCCESS';
+export const SET_IF_POSTING_IS_ERROR = 'SET_IF_POSTING_IS_ERROR';
 
 export const LogginFormErrorHandler = (logError) => ({
   type: LOGIN_FORM_ERROR,
@@ -52,6 +54,17 @@ export const postinFormErrorHandler = () => ({
 export const setPostError = (postErrorBool) => ({
   type: SET_POST_ERROR,
   postErrorBool,
+});
+
+export const setIfPostingIsSuccess = (isSuccess, successMessage = {}) => ({
+  type: SET_IF_POSTING_IS_SUCCESS,
+  isSuccess,
+  successMessage,
+});
+export const setIfPostingIsError = (isError, errorMessage = {}) => ({
+  type: SET_IF_POSTING_IS_ERROR,
+  isError,
+  errorMessage,
 });
 
 /** -------------------------------------------------------- */

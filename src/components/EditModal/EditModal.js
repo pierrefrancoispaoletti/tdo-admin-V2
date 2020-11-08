@@ -45,6 +45,9 @@ const EditModal = ({
             prepareDishesToBePoster();
             // @TODO ajouter un error handller ou modifier l'existant
             // je penche vers l'ajout d'un nouveau
+            // rajouter ici le postinFormErrorHandler et mettre à l'interieur
+            // le editDisheToRestAPI
+            // la gestion serait la meme que pour l'ajout d'articles
             editDisheToRESTApi();
           }}
         >

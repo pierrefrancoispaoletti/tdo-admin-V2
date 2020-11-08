@@ -18,6 +18,8 @@ import {
   TOGGLE_POST_TYPE_LIST,
   GET_USER_SEARCH_INPUT,
   SET_SEARCH_RESULTS,
+  SET_IF_POSTING_IS_SUCCESS,
+  SET_IF_POSTING_IS_ERROR,
 } from '../actions/Tdo';
 import categories from '../datas/categories';
 import { convertCategoryNameToId } from '../utils/utils';
@@ -64,10 +66,18 @@ const initialState = {
   disheObject: {},
 
   token: '',
-  isLogged: false,
+  isLogged: true,
 
   isLoading: false,
   userSearchInput: '',
+  // aparition ou non du message d'erreur /succes au post ou a l'edition
+  isSuccess: false,
+  isError: false,
+  successMessage: {},
+  errorMessage: {},
+
+  // afin d'afficher un message sur les resultats de recherche
+  searchResults: 5,
 };
 
 function reducer(state = initialState, action = {}) {
@@ -94,6 +104,7 @@ function reducer(state = initialState, action = {}) {
             || ((element.type.toLowerCase()).includes(newState.userSearchInput))
             ) {
               arrayToPush.push(element);
+              // ajouter ici un arrayToPush.length pour connaitre le nombre de recherches retournées
             }
           }
           return [...arrayToPush];
@@ -324,8 +335,20 @@ function reducer(state = initialState, action = {}) {
       if (newState.currentDisheName === 'Pizze' || newState.currentDisheName === 'Boissons' || newState.currentDisheName === 'Cichetteria') {
         newState.dishesInfosToAdd.categories = [newState.disheCategory];
       }
+      // pour rendre non indispensable le champ description selon la categorie
+      if (newState.disheDescription === '' && (newState.currentDisheName === 'Vins' || newState.currentDisheName === 'Boissons' || newState.currentDisheName === 'Cichetteria')) {
+        newState.disheDescription = ' ';
+        newState.dishesInfosToAdd.content = ' ';
+      }
       if (newState.currentDisheName === 'Vins') {
-        newState.dishesInfosToAdd.region = newState.wineRegion;
+        // pour rendre non indispensable le champ region dans les vins
+        if (newState.wineRegion === '') {
+          newState.wineRegion = ' ';
+          newState.dishesInfosToAdd.region = ' ';
+        }
+        else {
+          newState.dishesInfosToAdd.region = newState.wineRegion;
+        }
         newState.dishesInfosToAdd.contenant = newState.wineContent;
         newWineArray.push(newState.wineColorRed, newState.wineColorWhite, newState.wineColorRose);
         const filteredArray = newWineArray.filter((e) => e !== '');
@@ -340,6 +363,14 @@ function reducer(state = initialState, action = {}) {
       newState.dishesCategory = action.disheSlug;
       newState.disheId = action.disheId;
       newState.disheStatus = action.disheStatus;
+      break;
+    case SET_IF_POSTING_IS_SUCCESS:
+      newState.isSuccess = action.isSuccess;
+      newState.successMessage = action.successMessage;
+      break;
+    case SET_IF_POSTING_IS_ERROR:
+      newState.isError = action.isError;
+      newState.errorMessage = action.errorMessage;
       break;
     default:
       return state;

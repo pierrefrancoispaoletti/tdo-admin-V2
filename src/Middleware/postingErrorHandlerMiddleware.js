@@ -17,6 +17,8 @@ const postingErrorHandlerMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
+    // on ajouterai ici le handler pour une signalisation des erreurs dans les editions
+    // cependant il faudrait exclure les champs descriptions et region car non obligatoires
     default:
       next(action);
   }

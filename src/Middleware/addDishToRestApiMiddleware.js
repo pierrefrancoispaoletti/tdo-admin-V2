@@ -1,9 +1,11 @@
 import {
-  POST_DISHE_TO_REST_API, userLogged, closeModal, loadDishes,
+  POST_DISHE_TO_REST_API, userLogged, closeModal, loadDishes, setIfPostingIsError,
+  setIfPostingIsSuccess,
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
 import { baseUri, jsonUrl, verifyToken } from '../utils/utils';
+import { errorMessages, successMessages } from '../datas/messages';
 
 const addDishToRestApiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -23,10 +25,10 @@ const addDishToRestApiMiddleware = (store) => (next) => (action) => {
               .then(() => {
                 store.dispatch(closeModal());
                 store.dispatch(loadDishes());
+                store.dispatch(setIfPostingIsSuccess(true, successMessages[0].postSuccess));
               })
-              .catch((error) => {
-                // eslint-disable-next-line no-console
-                console.warn(error);
+              .catch(() => {
+                store.dispatch(setIfPostingIsError(true, errorMessages[0].postingError));
               }),
           )
           .catch(() => store.dispatch(userLogged()));
