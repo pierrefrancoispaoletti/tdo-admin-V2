@@ -66,7 +66,7 @@ const initialState = {
   disheObject: {},
 
   token: '',
-  isLogged: true,
+  isLogged: false,
 
   isLoading: false,
   userSearchInput: '',
@@ -336,7 +336,7 @@ function reducer(state = initialState, action = {}) {
         newState.dishesInfosToAdd.categories = [newState.disheCategory];
       }
       // pour rendre non indispensable le champ description selon la categorie
-      if (newState.disheDescription === '' && (newState.currentDisheName === 'Vins' || newState.currentDisheName === 'Boissons' || newState.currentDisheName === 'Cichetteria')) {
+      if (newState.disheDescription === '' && newState.currentDisheName !== 'Pizze') {
         newState.disheDescription = ' ';
         newState.dishesInfosToAdd.content = ' ';
       }

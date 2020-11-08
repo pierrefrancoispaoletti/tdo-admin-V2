@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button, Container, Message, Transition,
-} from 'semantic-ui-react';
-import { errorMessages, successMessages } from '../../datas/messages';
+import { Container, Message, Transition } from 'semantic-ui-react';
+import './errororsuccessmessages.scss';
 
 const ErrorOrSuccessMessage = ({
-  isSuccess, isError, setIfPostingIsSuccess, setIfPostingIsError, successMessage, errorMessage,
+  isSuccess,
+  isError,
+  setIfPostingIsSuccess,
+  setIfPostingIsError,
+  successMessage,
+  errorMessage,
 }) => {
   useEffect(() => {
     setTimeout(() => {
@@ -19,15 +22,21 @@ const ErrorOrSuccessMessage = ({
     }, 2000);
   }, [isError]);
   return (
-    <Container>
+    <Container className="toggleErrorMessages" textAlign="center">
       <Transition visible={isSuccess} animation="drop" duration={500}>
-        <Message positive header={successMessage.header} content={successMessage.content} />
+        <Message
+          positive
+          header={successMessage.header}
+          content={successMessage.content}
+        />
       </Transition>
       <Transition visible={isError} animation="drop" duration={500}>
-        <Message negative header={errorMessage.header} content={errorMessage.content} />
+        <Message
+          negative
+          header={errorMessage.header}
+          content={errorMessage.content}
+        />
       </Transition>
-      <Button content="true" positive onClick={() => setIfPostingIsSuccess(true, successMessages[0].postSuccess)} />
-      <Button content="false" negative onClick={() => setIfPostingIsError(true, errorMessages[0].postError)} />
     </Container>
   );
 };

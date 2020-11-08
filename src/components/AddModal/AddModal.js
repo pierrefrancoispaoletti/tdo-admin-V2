@@ -11,9 +11,8 @@ import {
   Radio,
   Transition,
 } from 'semantic-ui-react';
-import categories from '../../datas/categories';
-
 import { errorMessages } from '../../datas/messages';
+import categories from '../../datas/categories';
 
 const AddModal = ({
   postError,
@@ -48,8 +47,8 @@ const AddModal = ({
           {postError && (
             <Message
               error
-              header={errorMessages.postError.header}
-              content={errorMessages.postError.content}
+              header={errorMessages[0].postError.header}
+              content={errorMessages[0].postError.content}
             />
           )}
           <Form.Field
@@ -165,7 +164,9 @@ const AddModal = ({
               </Form.Group>
             </>
           )}
-          <Form.Field>
+          <Form.Field
+            error={postError && dishePrice === ''}
+          >
             <label htmlFor="dishePrice">Prix</label>
             <Input
               value={dishePrice}

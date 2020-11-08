@@ -55,8 +55,8 @@ const EditModal = ({
               && (
                 <Message
                   error
-                  header={errorMessages.postError.header}
-                  content={errorMessages.postError.content}
+                  header={errorMessages[0].postError.header}
+                  content={errorMessages[0].postError.content}
                 />
               )}
           <Form.Field>

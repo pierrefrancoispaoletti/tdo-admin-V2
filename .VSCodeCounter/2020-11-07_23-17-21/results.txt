@@ -1,0 +1,118 @@
+Date : 2020-11-07 23:17:21
+Directory : /var/www/html/admin-tdo-V3-ReactRedux/src
+Total : 62 files,  3443 codes, 79 comments, 316 blanks, all 3838 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         53 |      3,245 |         65 |        295 |      3,605 |
+| CSS        |          2 |        155 |          3 |         12 |        170 |
+| SCSS       |          5 |         24 |         11 |          7 |         42 |
+| HTML       |          1 |         12 |          0 |          1 |         13 |
+| XML        |          1 |          7 |          0 |          1 |          8 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                        | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                           |         62 |      3,443 |         79 |        316 |      3,838 |
+| Containers                                                                                  |         18 |        328 |          0 |        106 |        434 |
+| Containers/AddModal                                                                         |          1 |         29 |          0 |          6 |         35 |
+| Containers/App                                                                              |          1 |          6 |          0 |          4 |         10 |
+| Containers/DeleteModal                                                                      |          1 |         17 |          0 |          6 |         23 |
+| Containers/EditModal                                                                        |          1 |         31 |          0 |          6 |         37 |
+| Containers/FoodList                                                                         |         11 |        202 |          0 |         66 |        268 |
+| Containers/Footer                                                                           |          1 |         14 |          0 |          6 |         20 |
+| Containers/Login                                                                            |          1 |         14 |          0 |          6 |         20 |
+| Containers/PostTypeSelector                                                                 |          1 |         15 |          0 |          6 |         21 |
+| Middleware                                                                                  |          7 |        279 |          7 |         28 |        314 |
+| actions                                                                                     |          1 |        131 |         31 |         45 |        207 |
+| assets                                                                                      |          1 |         12 |          0 |          1 |         13 |
+| components                                                                                  |         25 |      2,046 |         11 |         86 |      2,143 |
+| components/AddModal                                                                         |          1 |        292 |          1 |          5 |        298 |
+| components/App                                                                              |          3 |         56 |          5 |          8 |         69 |
+| components/DeleteModal                                                                      |          1 |         46 |          0 |          4 |         50 |
+| components/EditModal                                                                        |          1 |        304 |          5 |          4 |        313 |
+| components/Footer                                                                           |          2 |         46 |          0 |          6 |         52 |
+| components/Login                                                                            |          1 |         73 |          0 |          3 |         76 |
+| components/Main                                                                             |         12 |      1,118 |          0 |         46 |      1,164 |
+| components/Main/DisheComponent                                                              |          1 |          0 |          0 |          1 |          1 |
+| components/Main/FoodList                                                                    |         10 |      1,071 |          0 |         42 |      1,113 |
+| components/PostTypeSelector                                                                 |          2 |         90 |          0 |          5 |         95 |
+| components/Title                                                                            |          2 |         21 |          0 |          5 |         26 |
+| datas                                                                                       |          3 |         93 |          1 |          7 |        101 |
+| store                                                                                       |          2 |        356 |          2 |         20 |        378 |
+| styles                                                                                      |          3 |        152 |         14 |         14 |        180 |
+| utils                                                                                       |          1 |         30 |          9 |          6 |         45 |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                    | language   | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/AddModal/AddModal.js                   | JavaScript |         29 |          0 |          6 |         35 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/App/App.js                             | JavaScript |          6 |          0 |          4 |         10 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/DeleteModal/DeleteModal.js             | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/EditModal/EditModal.js                 | JavaScript |         31 |          0 |          6 |         37 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Antipasti.js                  | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Boissons.js                   | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Cichetteria.js                | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Cocktails.js                  | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Desserts.js                   | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/FoodItemContainer.js          | JavaScript |         32 |          0 |          6 |         38 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/LaCarne.js                    | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Pasta.js                      | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Pizze.js                      | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Tagliate.js                   | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/FoodList/Vins.js                       | JavaScript |         17 |          0 |          6 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/Footer/Footer.js                       | JavaScript |         14 |          0 |          6 |         20 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/Login/Login.js                         | JavaScript |         14 |          0 |          6 |         20 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Containers/PostTypeSelector/PostTypeSelector.js   | JavaScript |         15 |          0 |          6 |         21 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Middleware/addDishToRestApiMiddleware.js          | JavaScript |         39 |          1 |          4 |         44 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Middleware/authMiddleware.js                      | JavaScript |         37 |          0 |          4 |         41 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Middleware/deleteDishToRestApiMiddleware.js       | JavaScript |         38 |          1 |          4 |         43 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Middleware/editDishToRestApiMiddleware.js         | JavaScript |         68 |          2 |          4 |         74 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Middleware/loadDishesMiddleware.js                | JavaScript |         39 |          1 |          4 |         44 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Middleware/postingErrorHandlerMiddleware.js       | JavaScript |         23 |          0 |          3 |         26 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/Middleware/searchMiddleware.js                    | JavaScript |         35 |          2 |          5 |         42 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/actions/Tdo.js                                    | JavaScript |        131 |         31 |         45 |        207 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/assets/index.html                                 | HTML       |         12 |          0 |          1 |         13 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/AddModal/AddModal.js                   | JavaScript |        292 |          1 |          5 |        298 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/App/index.js                           | JavaScript |         41 |          5 |          5 |         51 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/App/react-logo.svg                     | XML        |          7 |          0 |          1 |          8 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/App/styles.css                         | CSS        |          8 |          0 |          2 |         10 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/DeleteModal/DeleteModal.js             | JavaScript |         46 |          0 |          4 |         50 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/EditModal/EditModal.js                 | JavaScript |        304 |          5 |          4 |        313 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Footer/Footer.js                       | JavaScript |         33 |          0 |          5 |         38 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Footer/footer.scss                     | SCSS       |         13 |          0 |          1 |         14 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Login/Login.js                         | JavaScript |         73 |          0 |          3 |         76 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/DisheComponent/DisheComponent.js  | JavaScript |          0 |          0 |          1 |          1 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Antipasti.js             | JavaScript |         98 |          0 |          4 |        102 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Boissons.js              | JavaScript |        128 |          0 |          5 |        133 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Cichetteria.js           | JavaScript |        113 |          0 |          6 |        119 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Cocktails.js             | JavaScript |         98 |          0 |          4 |        102 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Desserts.js              | JavaScript |         98 |          0 |          4 |        102 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/LaCarne.js               | JavaScript |         98 |          0 |          4 |        102 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Pasta.js                 | JavaScript |         98 |          0 |          4 |        102 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Pizze.js                 | JavaScript |        115 |          0 |          4 |        119 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Tagliate.js              | JavaScript |         99 |          0 |          3 |        102 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/FoodList/Vins.js                  | JavaScript |        126 |          0 |          4 |        130 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Main/Main.js                           | JavaScript |         47 |          0 |          3 |         50 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/PostTypeSelector/PostTypeSelector.js   | JavaScript |         87 |          0 |          4 |         91 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/PostTypeSelector/posttypeselector.scss | SCSS       |          3 |          0 |          1 |          4 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Title/Title.js                         | JavaScript |         18 |          0 |          4 |         22 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/components/Title/title.scss                       | SCSS       |          3 |          0 |          1 |          4 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/datas/categories.js                               | JavaScript |         35 |          0 |          2 |         37 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/datas/messages.js                                 | JavaScript |         16 |          0 |          3 |         19 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/datas/posttypes.js                                | JavaScript |         42 |          1 |          2 |         45 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/index.js                                          | JavaScript |         16 |          4 |          3 |         23 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/store/reducer.js                                  | JavaScript |        333 |          2 |         16 |        351 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/store/store.js                                    | JavaScript |         23 |          0 |          4 |         27 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/styles/_reset.css                                 | CSS        |        147 |          3 |         10 |        160 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/styles/_vars.scss                                 | SCSS       |          0 |          0 |          1 |          1 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/styles/index.scss                                 | SCSS       |          5 |         11 |          3 |         19 |
+| /var/www/html/admin-tdo-V3-ReactRedux/src/utils/utils.js                                    | JavaScript |         30 |          9 |          6 |         45 |
+| Total                                                                                       |            |      3,443 |         79 |        316 |      3,838 |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

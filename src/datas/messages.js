@@ -5,7 +5,7 @@ export const errorMessages = [{
   },
   postError: {
     header: 'Il y a une erreur dans votre formulaire',
-    content: 'Tous les champs de ce formulaire sont obligatoires',
+    content: 'Les champs signalés en rouge sont obligatoires',
   },
   postingError: {
     header: 'Il y a eu un probléme',
