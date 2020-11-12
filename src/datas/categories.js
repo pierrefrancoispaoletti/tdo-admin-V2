@@ -1,35 +1,35 @@
 const categories = [
   {
     name: 'Les classiques',
-    id: '9',
+    id: '2',
   },
   {
     name: 'Les créatives',
-    id: '11',
+    id: '3',
   },
   {
     name: 'Alcools',
-    id: '5',
+    id: '14',
   },
   {
     name: 'Bières',
-    id: '7',
+    id: '18',
   },
   {
     name: 'Spiritueux',
-    id: '13',
+    id: '12',
   },
   {
     name: 'zdivers',
-    id: '17',
+    id: '118',
   },
   {
     name: 'Le coin de la Truffe',
-    id: '31',
+    id: '200',
   },
   {
     name: 'A la carte de soir',
-    id: '29',
+    id: '202',
   },
 ];
 

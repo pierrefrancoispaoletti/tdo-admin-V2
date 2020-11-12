@@ -27,8 +27,8 @@ const Login = ({
         && (
         <Message
           error
-          header={errorMessages.loginError.header}
-          content={errorMessages.loginError.content}
+          header={errorMessages[0].loginError.header}
+          content={errorMessages[0].loginError.content}
         />
         )}
         <Form.Field>

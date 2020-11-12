@@ -20,6 +20,7 @@ import {
   SET_SEARCH_RESULTS,
   SET_IF_POSTING_IS_SUCCESS,
   SET_IF_POSTING_IS_ERROR,
+  SET_DISHES_CATEGORY,
 } from '../actions/Tdo';
 import categories from '../datas/categories';
 import { convertCategoryNameToId } from '../utils/utils';
@@ -87,31 +88,10 @@ function reducer(state = initialState, action = {}) {
       newState.showPostTypeList = !newState.showPostTypeList;
       break;
     case GET_USER_SEARCH_INPUT:
-      newState.userSearchInput = action.userSearchInput;
+      newState.userSearchInput = action.userSearchInput.toLowerCase();
       break;
     case SET_SEARCH_RESULTS:
-      {
-        newState.dishesToLoad = [];
-        const newArrayAllDishes = [...newState.allDishes];
-        const arrayToPush = [...newState.dishesToLoad];
-
-        const searchWordInArray = () => {
-          for (let i = 0; i < newArrayAllDishes.length; i += 1) {
-            const element = newArrayAllDishes[i];
-            if (
-              (element.title.rendered.toLowerCase()).includes(newState.userSearchInput)
-            || (element.content.rendered.toLowerCase()).includes(newState.userSearchInput)
-            || ((element.type.toLowerCase()).includes(newState.userSearchInput))
-            ) {
-              arrayToPush.push(element);
-              // ajouter ici un arrayToPush.length pour connaitre le nombre de recherches retournées
-            }
-          }
-          return [...arrayToPush];
-        };
-        newState.dishesToLoad = searchWordInArray();
-        newState.userSearchInput = '';
-      }
+      newState.userSearchInput = '';
       break;
     case GET_USER_LOGIN:
       switch (action.identifier) {
@@ -141,6 +121,9 @@ function reducer(state = initialState, action = {}) {
     case SET_DISHES:
       newState.allDishes = action.dishes;
       newState.dishesToLoad = action.dishes;
+      break;
+    case SET_DISHES_CATEGORY:
+      newState.dishesCategory = action.dishesCategory;
       break;
     case SET_CATEGORY:
       newState.category = '';
@@ -240,19 +223,40 @@ function reducer(state = initialState, action = {}) {
       newState.isOpenEditModal = true;
       newState.disheId = action.disheObject.id;
       newState.disheName = action.disheObject.title.rendered;
-      newState.disheDescription = action.disheObject.content.rendered;
+      newState.disheDescription = action.disheObject.content.rendered
+        .replace('<!-- wp:paragraph -->', '')
+        .replace('<!-- /wp:paragraph -->', '');
       newState.dishePrice = action.disheObject.meta.prix;
-      if (newState.currentDisheName === 'Pizze' || newState.currentDisheName === 'Boissons' || newState.currentDisheName === 'Cichetteria') {
+      if (
+        newState.currentDisheName === 'Pizze'
+        || newState.currentDisheName === 'Boissons'
+        || newState.currentDisheName === 'Cichetteria'
+      ) {
         // eslint-disable-next-line max-len
-        newState.disheCategory = convertCategoryNameToId(action.disheObject.categories[0], categories);
+        newState.disheCategory = convertCategoryNameToId(
+          action.disheObject.categories[0],
+          categories,
+        );
       }
       if (newState.currentDisheName === 'Vins') {
         newState.wineRegion = action.disheObject.meta.region;
         // eslint-disable-next-line prefer-destructuring
         newState.wineContent = action.disheObject.meta.contenant[0];
-        newState.wineColorRed = action.disheObject.meta.Couleur.includes('Rouge') ? 'Rouge' : '';
-        newState.wineColorWhite = action.disheObject.meta.Couleur.includes('Blanc') ? 'Blanc' : '';
-        newState.wineColorRose = action.disheObject.meta.Couleur.includes('Rosé') ? 'Rosé' : '';
+        newState.wineColorRed = action.disheObject.meta.Couleur.includes(
+          'Rouge',
+        )
+          ? 'Rouge'
+          : '';
+        newState.wineColorWhite = action.disheObject.meta.Couleur.includes(
+          'Blanc',
+        )
+          ? 'Blanc'
+          : '';
+        newState.wineColorRose = action.disheObject.meta.Couleur.includes(
+          'Rosé',
+        )
+          ? 'Rosé'
+          : '';
       }
       break;
     }
@@ -332,11 +336,18 @@ function reducer(state = initialState, action = {}) {
       newState.dishesInfosToAdd.content = newState.disheDescription;
       newState.dishesInfosToAdd.prix = newState.dishePrice;
       newState.dishesInfosToAdd.status = 'publish';
-      if (newState.currentDisheName === 'Pizze' || newState.currentDisheName === 'Boissons' || newState.currentDisheName === 'Cichetteria') {
+      if (
+        newState.currentDisheName === 'Pizze'
+        || newState.currentDisheName === 'Boissons'
+        || newState.currentDisheName === 'Cichetteria'
+      ) {
         newState.dishesInfosToAdd.categories = [newState.disheCategory];
       }
       // pour rendre non indispensable le champ description selon la categorie
-      if (newState.disheDescription === '' && newState.currentDisheName !== 'Pizze') {
+      if (
+        newState.disheDescription === ''
+        && newState.currentDisheName !== 'Pizze'
+      ) {
         newState.disheDescription = ' ';
         newState.dishesInfosToAdd.content = ' ';
       }
@@ -350,7 +361,11 @@ function reducer(state = initialState, action = {}) {
           newState.dishesInfosToAdd.region = newState.wineRegion;
         }
         newState.dishesInfosToAdd.contenant = newState.wineContent;
-        newWineArray.push(newState.wineColorRed, newState.wineColorWhite, newState.wineColorRose);
+        newWineArray.push(
+          newState.wineColorRed,
+          newState.wineColorWhite,
+          newState.wineColorRose,
+        );
         const filteredArray = newWineArray.filter((e) => e !== '');
         newState.dishesInfosToAdd.Couleur = [...filteredArray];
       }

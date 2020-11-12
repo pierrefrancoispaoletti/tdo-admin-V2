@@ -1,8 +1,8 @@
 import Axios from 'axios';
 
 /** @TODO CHANGER L'URL AVANT MISE EN PROD */
-// export const baseUri = 'https://le-tdo.com';
-export const baseUri = 'http://localhost/projet-tdo/';
+export const baseUri = 'https://le-tdo.com/';
+// export const baseUri = 'http://localhost/projet-tdo/';
 export const jsonUrl = 'wp-json/wp/v2/';
 export const jwtUrl = 'wp-json/jwt-auth/v1/';
 

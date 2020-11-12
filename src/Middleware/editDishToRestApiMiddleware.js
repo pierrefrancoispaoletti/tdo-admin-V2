@@ -57,6 +57,8 @@ const editDishToRestApiMiddleware = (store) => (next) => (action) => {
             .then(() => {
               store.dispatch(loadDishes());
               store.dispatch(closeModal());
+            })
+            .then(() => {
               store.dispatch(setIfPostingIsSuccess(true, successMessages[0].editSuccess));
             })
             .catch(() => {

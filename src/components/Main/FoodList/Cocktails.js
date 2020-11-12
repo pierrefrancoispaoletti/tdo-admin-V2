@@ -49,38 +49,26 @@ const Cocktails = ({
             <Card.Description>{drink.meta.prix}€</Card.Description>
           </Card.Content>
           <Card.Content extra textAlign="center">
-            <Button.Group size="mini">
-              <Button
-                color="green"
-                icon
-                labelPosition="left"
-                onClick={() => openEditModal({ ...drink })}
-              >
-                <Icon name="write" />
-                Modifier
-              </Button>
-              <Button
-                color="grey"
-                icon
-                labelPosition="left"
-                onClick={() => {
-                  setDisheToPrivate(drink.id, drink.status, drink.slug);
-                  setDisheToPrivateInRestApi();
-                }}
-              >
-                <Icon name={drink.status !== 'private' ? 'hide' : 'eye'} />
-                {drink.status !== 'private' ? 'Cacher' : 'Reveler'}
-              </Button>
-              <Button
-                color="red"
-                icon
-                labelPosition="left"
-                onClick={() => openDeleteModal(drink.title.rendered, drink.id, drink.slug)}
-              >
-                <Icon name="trash alternate" />
-                Supprimer
-              </Button>
-            </Button.Group>
+            <Button
+              color="green"
+              icon={{ name: 'write' }}
+              onClick={() => openEditModal({ ...drink })}
+            />
+            <Button
+              color="grey"
+              icon
+              onClick={() => {
+                setDisheToPrivate(drink.id, drink.status, drink.slug);
+                setDisheToPrivateInRestApi();
+              }}
+            >
+              <Icon name={drink.status !== 'private' ? 'hide' : 'eye'} />
+            </Button>
+            <Button
+              color="red"
+              icon={{ name: 'trash alternate' }}
+              onClick={() => openDeleteModal(drink.title.rendered, drink.id, drink.slug)}
+            />
           </Card.Content>
         </Card>
       ))}

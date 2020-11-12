@@ -10,26 +10,26 @@ const searchMiddleware = (store) => (next) => (action) => {
     case SEARCH_FUNCTION: {
       const {
         token,
+        userSearchInput,
       } = store.getState();
       store.dispatch(setLoading(true));
       Axios({
         method: 'get',
-        url: `${baseUri + jsonUrl}all-posts`,
+        // modifier le code ici avec le nouveau endpoint search/?s=chaine-a-a-chercher
+        url: `${baseUri + jsonUrl}search/?s=${userSearchInput}`,
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => {
           store.dispatch(setDishes(response.data));
+          store.dispatch(setLoading(false));
         })
         .then(() => {
           store.dispatch(setSearchResults());
-          // store.dispatch(loadDishes());
         })
-
         .catch((error) => {
           // eslint-disable-next-line no-console
           console.warn(error);
-        })
-        .finally(store.dispatch(setLoading(false)));
+        });
       next(action);
       break;
     }

@@ -35,7 +35,7 @@ const App = ({ isLoading }) => (
     )}
     {!isLoading
     && (
-    <Route path="/">
+    <Route path="/admin">
       <Main />
     </Route>
     )}

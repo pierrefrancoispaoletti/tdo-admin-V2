@@ -6,7 +6,7 @@ import './title.scss';
 
 const Title = () => (
   <Container className="container__title">
-    <Link to="/">
+    <Link to="/admin">
       <Header as="h1">
         <Icon name="settings" color="teal" />
         <Header.Content>

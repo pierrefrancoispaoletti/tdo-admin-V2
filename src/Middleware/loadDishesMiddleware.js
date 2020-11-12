@@ -24,12 +24,12 @@ const loadDishesMiddleware = (store) => (next) => (action) => {
           })
             .then((response) => {
               store.dispatch(setDishes(response.data));
+              store.dispatch(setLoading(false));
             })
             .catch((error) => {
               // eslint-disable-next-line no-console
               console.warn(error);
-            })
-            .finally(store.dispatch(setLoading(false))),
+            }),
         )
         .catch(() => store.dispatch(userLogged()));
       next(action);

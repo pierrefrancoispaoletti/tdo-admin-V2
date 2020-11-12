@@ -77,38 +77,26 @@ const Vins = ({
             </Card.Content>
           )}
           <Card.Content extra textAlign="center">
-            <Button.Group size="mini">
-              <Button
-                color="green"
-                icon
-                labelPosition="left"
-                onClick={() => openEditModal({ ...wine })}
-              >
-                <Icon name="write" />
-                Modifier
-              </Button>
-              <Button
-                color="grey"
-                icon
-                labelPosition="left"
-                onClick={() => {
-                  setDisheToPrivate(wine.id, wine.status, wine.slug);
-                  setDisheToPrivateInRestApi();
-                }}
-              >
-                <Icon name={wine.status !== 'private' ? 'hide' : 'eye'} />
-                {wine.status !== 'private' ? 'Cacher' : 'Reveler'}
-              </Button>
-              <Button
-                color="red"
-                icon
-                labelPosition="left"
-                onClick={() => openDeleteModal(wine.title.rendered, wine.id, wine.slug)}
-              >
-                <Icon name="trash alternate" />
-                Supprimer
-              </Button>
-            </Button.Group>
+            <Button
+              color="green"
+              icon={{ name: 'write' }}
+              onClick={() => openEditModal({ ...wine })}
+            />
+            <Button
+              color="grey"
+              icon
+              onClick={() => {
+                setDisheToPrivate(wine.id, wine.status, wine.slug);
+                setDisheToPrivateInRestApi();
+              }}
+            >
+              <Icon name={wine.status !== 'private' ? 'hide' : 'eye'} />
+            </Button>
+            <Button
+              color="red"
+              icon={{ name: 'trash alternate' }}
+              onClick={() => openDeleteModal(wine.title.rendered, wine.id, wine.slug)}
+            />
           </Card.Content>
         </Card>
       ))}

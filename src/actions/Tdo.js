@@ -85,6 +85,12 @@ export const EDIT_DISHE_TO_REST_API = 'EDIT_DISHE_TO_REST_API';
 export const TOGGLE_CHECKBOX_IN_WINE = 'TOGGLE_CHECKBOX_IN_WINE';
 export const SET_DISHE_TO_PRIVATE = 'SET_DISHE_TO_PRIVATE';
 export const SET_DISHE_TO_PRIVATE_IN_REST_API = 'SET_DISHE_TO_PRIVATE_IN_REST_API';
+export const SET_DISHES_CATEGORY = 'SET_DISHES_CATEGORY';
+
+export const setDishesCategory = (dishesCategory) => ({
+  type: SET_DISHES_CATEGORY,
+  dishesCategory,
+});
 
 export const getDishes = (dishesSlug, dishesName) => ({
   type: GET_DISHES,

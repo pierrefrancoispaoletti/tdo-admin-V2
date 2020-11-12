@@ -40,7 +40,7 @@ const PostTypeSelector = ({
                 <Icon name="add" />
                 Ajouter
               </Button>
-              <Link to={`/${postType.slug}`}>
+              <Link to={`/admin/${postType.slug}`}>
                 <Button
                   size="mini"
                   color="green"

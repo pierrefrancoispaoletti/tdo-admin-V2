@@ -25,6 +25,8 @@ const addDishToRestApiMiddleware = (store) => (next) => (action) => {
             .then(() => {
               store.dispatch(closeModal());
               store.dispatch(loadDishes());
+            })
+            .then(() => {
               store.dispatch(setIfPostingIsSuccess(true, successMessages[0].deleteSuccess));
             })
             .catch(() => {

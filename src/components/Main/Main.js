@@ -13,34 +13,34 @@ import Vins from '../../Containers/FoodList/Vins';
 
 const Main = () => (
   <Switch>
-    <Route exact path="/pizzas">
+    <Route path="/admin/pizzas">
       <Pizze />
     </Route>
-    <Route exact path="/tagliate">
+    <Route path="/admin/tagliate">
       <Tagliate />
     </Route>
-    <Route exact path="/la_carne">
+    <Route path="/admin/la_carne">
       <LaCarne />
     </Route>
-    <Route exact path="/ptes_et_risottos">
+    <Route path="/admin/ptes_et_risottos">
       <Pasta />
     </Route>
-    <Route exact path="/les_antipasti">
+    <Route path="/admin/les_antipasti">
       <Antipasti />
     </Route>
-    <Route exact path="/les_desserts">
+    <Route path="/admin/les_desserts">
       <Desserts />
     </Route>
-    <Route exact path="/cichetteria">
+    <Route path="/admin/cichetteria">
       <Cichetteria />
     </Route>
-    <Route exact path="/les_boissons">
+    <Route path="/admin/les_boissons">
       <Boissons />
     </Route>
-    <Route exact path="/les_cocktails">
+    <Route path="/admin/les_cocktails">
       <Cocktails />
     </Route>
-    <Route exact path="/vins">
+    <Route path="/admin/vins">
       <Vins />
     </Route>
   </Switch>
