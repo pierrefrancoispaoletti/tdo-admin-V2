@@ -11,7 +11,6 @@ const DisheMenuBoissons = ({ category, setCategory }) => (
     >
       Tous
     </Menu.Item>
-
     <Menu.Item
       name="Alcools"
       active={category === 'Alcools'}

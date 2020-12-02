@@ -19,8 +19,8 @@ const DisheComponent = ({
   setDisheToPrivateInRestApi,
 }) => (
   <Container textAlign="center">
-    {dishes.length > 0 && (
-      <Menu category={category} setCategory={setCategory} />
+    {dishes.length > 0 && category !== '' && (
+    <Menu category={category} setCategory={setCategory} />
     )}
     <Divider hidden />
     <Card.Group stackable>

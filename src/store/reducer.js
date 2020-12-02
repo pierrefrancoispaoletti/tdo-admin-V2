@@ -37,7 +37,7 @@ const initialState = {
   allDishes: [],
   dishesToLoad: [],
   dishesCategoryToLoad: [],
-  category: '',
+  category: 'All',
 
   currentDisheName: '',
   disheNameToAdd: '',

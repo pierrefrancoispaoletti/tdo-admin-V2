@@ -1,5 +1,9 @@
 import {
-  SEARCH_FUNCTION, setLoading, setDishes, setSearchResults,
+  SEARCH_FUNCTION,
+  setLoading,
+  setDishes,
+  setSearchResults,
+  setCategory,
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
@@ -20,7 +24,8 @@ const searchMiddleware = (store) => (next) => (action) => {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => {
-          store.dispatch(setDishes(response.data));
+          store.dispatch(setDishes(response.data || []));
+          store.dispatch(setCategory(''));
           store.dispatch(setLoading(false));
         })
         .then(() => {

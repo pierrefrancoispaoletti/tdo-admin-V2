@@ -1,5 +1,9 @@
 import {
-  LOAD_DISHES, setDishes, userLogged, setLoading,
+  LOAD_DISHES,
+  setDishes,
+  userLogged,
+  setLoading,
+  setCategory,
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
@@ -28,6 +32,7 @@ const loadDishesMiddleware = (store) => (next) => (action) => {
             .then((response) => {
               store.dispatch(setDishes(response.data));
               store.dispatch(setLoading(false));
+              store.dispatch(setCategory('All'));
             })
             .catch((error) => {
               // eslint-disable-next-line no-console
