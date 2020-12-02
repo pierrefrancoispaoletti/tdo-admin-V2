@@ -8,7 +8,6 @@ import App from '../../components/App';
 
 const mapStateToProps = (state) => ({
   isLoading: state.isLoading,
-  isLogged: state.isLogged,
 });
 
 const mapDispatchToProps = {

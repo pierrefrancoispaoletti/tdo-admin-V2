@@ -23,7 +23,7 @@ import { getToken, verifyToken } from '../../utils/utils';
 // si non , l'afficher
 
 // == Composant
-const App = ({ isLoading, isLogged, userLogged }) => {
+const App = ({ isLoading, userLogged }) => {
   useEffect(() => {
     const token = getToken();
     verifyToken(token)
@@ -32,7 +32,7 @@ const App = ({ isLoading, isLogged, userLogged }) => {
   }, []);
   return (
     <div className="app">
-      {isLogged === false && <Login />}
+      <Login />
       <Title />
       <ErrorOrSuccessMessage />
       <Divider />
@@ -60,7 +60,6 @@ const App = ({ isLoading, isLogged, userLogged }) => {
 
 App.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  isLogged: PropTypes.bool.isRequired,
   userLogged: PropTypes.func.isRequired,
 };
 
