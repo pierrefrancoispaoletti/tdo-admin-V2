@@ -4,14 +4,17 @@ import {
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
-import { baseUri, jsonUrl, verifyToken } from '../utils/utils';
+import {
+  baseUri, getToken, jsonUrl, verifyToken,
+} from '../utils/utils';
 import { errorMessages, successMessages } from '../datas/messages';
 
 const addDishToRestApiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case POST_DISHE_TO_REST_API: {
+      const token = getToken();
       const {
-        token, dishesInfosToAdd, dishesCategory, postError,
+        dishesInfosToAdd, dishesCategory, postError,
       } = store.getState();
       if (postError === false) {
         verifyToken(token)
@@ -33,7 +36,7 @@ const addDishToRestApiMiddleware = (store) => (next) => (action) => {
                 store.dispatch(setIfPostingIsError(true, errorMessages[0].postingError));
               }),
           )
-          .catch(() => store.dispatch(userLogged()));
+          .catch(() => store.dispatch(userLogged(false)));
         next(action);
       }
       next(action);

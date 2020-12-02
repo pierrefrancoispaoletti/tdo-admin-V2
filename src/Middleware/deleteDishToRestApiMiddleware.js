@@ -3,14 +3,17 @@ import {
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
-import { baseUri, jsonUrl, verifyToken } from '../utils/utils';
+import {
+  baseUri, getToken, jsonUrl, verifyToken,
+} from '../utils/utils';
 import { errorMessages, successMessages } from '../datas/messages';
 
 const addDishToRestApiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case DELETE_DISHE: {
+      const token = getToken();
       const {
-        token, dishesCategory, disheId,
+        dishesCategory, disheId,
       } = store.getState();
       verifyToken(token)
         .then(
@@ -33,7 +36,7 @@ const addDishToRestApiMiddleware = (store) => (next) => (action) => {
               store.dispatch(setIfPostingIsError(true, errorMessages[0].deletingError));
             }),
         )
-        .catch(() => store.dispatch(userLogged()));
+        .catch(() => store.dispatch(userLogged(false)));
       next(action);
       break;
     }

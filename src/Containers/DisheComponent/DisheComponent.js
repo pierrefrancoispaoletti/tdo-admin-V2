@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Cichetteria from '../../components/Main/FoodList/Cichetteria';
+import DisheComponent from '../../components/Main/DisheComponent/DisheComponent';
 
 import {
   setCategory, openDeleteModal, setDisheToPrivate, setDisheToPrivateInRestApi, openEditModal,
@@ -19,4 +19,4 @@ const mapDispatchToProps = {
   setDisheToPrivateInRestApi,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cichetteria);
+export default connect(mapStateToProps, mapDispatchToProps)(DisheComponent);

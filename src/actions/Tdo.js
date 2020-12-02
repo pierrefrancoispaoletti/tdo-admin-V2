@@ -15,20 +15,9 @@ export const loggingAttempt = () => ({
   type: LOGGING_ATTEMPT,
 });
 
-export const userLogged = () => ({
+export const userLogged = (logged) => ({
   type: USER_LOGGED,
-});
-
-/** -------------------------------------------------------- */
-
-/**     **\
- * TOKEN  *
- */
-export const REGISTER_TOKEN = 'REGISTER_TOKEN';
-
-export const registerToken = (token) => ({
-  type: REGISTER_TOKEN,
-  token,
+  logged,
 });
 
 /** -------------------------------------------------------- */

@@ -13,7 +13,7 @@ const Login = ({
   changeLoginValue,
   loggingAttempt,
 }) => (
-  <Modal open={!isLogged}>
+  <Modal open={isLogged === false}>
     <Modal.Header>Connexion</Modal.Header>
     <Modal.Content>
       <Form

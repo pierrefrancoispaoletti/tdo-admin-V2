@@ -1,12 +1,11 @@
 import {
   LOGGING_ATTEMPT,
   userLogged,
-  registerToken,
   LogginFormErrorHandler,
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
-import { baseUri, jwtUrl } from '../utils/utils';
+import { baseUri, jwtUrl, setToken } from '../utils/utils';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -21,12 +20,12 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          store.dispatch(registerToken(response.data.token));
           store.dispatch(LogginFormErrorHandler(false));
+          setToken(response.data.token);
         })
-        .then(store.dispatch(userLogged()))
+        .then(store.dispatch(userLogged(true)))
         .catch(() => {
-          store.dispatch(userLogged());
+          store.dispatch(userLogged(false));
           store.dispatch(LogginFormErrorHandler(true));
         });
       next(action);

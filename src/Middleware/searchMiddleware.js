@@ -3,13 +3,13 @@ import {
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
-import { baseUri, jsonUrl } from '../utils/utils';
+import { baseUri, getToken, jsonUrl } from '../utils/utils';
 
 const searchMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SEARCH_FUNCTION: {
+      const token = getToken();
       const {
-        token,
         userSearchInput,
       } = store.getState();
       store.dispatch(setLoading(true));

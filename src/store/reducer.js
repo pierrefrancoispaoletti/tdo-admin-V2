@@ -1,7 +1,6 @@
 import {
   GET_USER_LOGIN,
   USER_LOGGED,
-  REGISTER_TOKEN,
   LOGIN_FORM_ERROR,
   GET_DISHES,
   SET_DISHES,
@@ -65,8 +64,6 @@ const initialState = {
 
   isOpenEditModal: false,
   disheObject: {},
-
-  token: '',
   isLogged: false,
 
   isLoading: false,
@@ -106,10 +103,7 @@ function reducer(state = initialState, action = {}) {
       }
       break;
     case USER_LOGGED:
-      newState.isLogged = !state.isLogged;
-      break;
-    case REGISTER_TOKEN:
-      newState.token = action.token;
+      newState.isLogged = action.logged;
       break;
     case LOGIN_FORM_ERROR:
       newState.logError = action.logError;
@@ -360,7 +354,7 @@ function reducer(state = initialState, action = {}) {
         else {
           newState.dishesInfosToAdd.region = newState.wineRegion;
         }
-        newState.dishesInfosToAdd.contenant = newState.wineContent;
+        newState.dishesInfosToAdd.contenant = [newState.wineContent];
         newWineArray.push(
           newState.wineColorRed,
           newState.wineColorWhite,

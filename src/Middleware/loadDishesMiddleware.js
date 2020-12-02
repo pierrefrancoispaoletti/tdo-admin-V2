@@ -3,12 +3,15 @@ import {
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
-import { baseUri, jsonUrl, verifyToken } from '../utils/utils';
+import {
+  baseUri, getToken, jsonUrl, verifyToken,
+} from '../utils/utils';
 
 const loadDishesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOAD_DISHES: {
-      const { token, dishesCategory } = store.getState();
+      const token = getToken();
+      const { dishesCategory } = store.getState();
       store.dispatch(setLoading(true));
       verifyToken(token)
         .then(
@@ -31,7 +34,7 @@ const loadDishesMiddleware = (store) => (next) => (action) => {
               console.warn(error);
             }),
         )
-        .catch(() => store.dispatch(userLogged()));
+        .catch(() => store.dispatch(userLogged(false)));
       next(action);
       break;
     }

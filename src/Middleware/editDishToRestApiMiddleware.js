@@ -9,14 +9,17 @@ import {
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
-import { baseUri, jsonUrl, verifyToken } from '../utils/utils';
+import {
+  baseUri, getToken, jsonUrl, verifyToken,
+} from '../utils/utils';
 import { errorMessages, successMessages } from '../datas/messages';
 
 const editDishToRestApiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SET_DISHE_TO_PRIVATE_IN_REST_API: {
+      const token = getToken();
       const {
-        token, dishesCategory, disheId, disheStatus,
+        dishesCategory, disheId, disheStatus,
       } = store.getState();
       verifyToken(token)
         .then(
@@ -35,17 +38,17 @@ const editDishToRestApiMiddleware = (store) => (next) => (action) => {
               store.dispatch(setIfPostingIsError(true, errorMessages[0].editingError));
             }),
         )
-        .catch(() => store.dispatch(userLogged()));
+        .catch(() => store.dispatch(userLogged(false)));
       next(action);
       break;
     }
     case EDIT_DISHE_TO_REST_API: {
       const {
-        token,
         dishesCategory,
         disheId,
         dishesInfosToAdd,
       } = store.getState();
+      const token = getToken();
       verifyToken(token)
         .then(
           Axios({
@@ -65,7 +68,7 @@ const editDishToRestApiMiddleware = (store) => (next) => (action) => {
               store.dispatch(setIfPostingIsError(true, errorMessages[0].editingError));
             }),
         )
-        .catch(() => store.dispatch(userLogged()));
+        .catch(() => store.dispatch(userLogged(false)));
       next(action);
       break;
     }
