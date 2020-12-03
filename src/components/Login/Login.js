@@ -6,6 +6,7 @@ import {
 import { errorMessages } from '../../datas/messages';
 
 const Login = ({
+  isLoading,
   isLogged,
   logError,
   login,
@@ -56,6 +57,7 @@ const Login = ({
           type="submit"
           color="green"
           floated="right"
+          loading={isLoading}
         >
           Connexion
         </Button>
@@ -71,5 +73,6 @@ Login.propTypes = {
   loggingAttempt: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
   logError: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 export default Login;

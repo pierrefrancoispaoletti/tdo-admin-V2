@@ -4,10 +4,13 @@ import {
   setDishes,
   setSearchResults,
   setCategory,
+  setIfPostingIsSuccess,
+  setIfPostingIsError,
 } from 'src/actions/Tdo';
 import Axios from 'axios';
 
 import { baseUri, getToken, jsonUrl } from '../utils/utils';
+import { researchMessage, errorMessages } from '../datas/messages';
 
 const searchMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -24,16 +27,22 @@ const searchMiddleware = (store) => (next) => (action) => {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => {
-          store.dispatch(setDishes(response.data || []));
+          if (response.data.length > 0) {
+            store.dispatch(setDishes(response.data));
+            store.dispatch(setIfPostingIsSuccess(true, researchMessage[0].searchSuccess));
+          }
+          else {
+            store.dispatch(setDishes([]));
+            store.dispatch(setIfPostingIsError(true, researchMessage[0].searchError));
+          }
           store.dispatch(setCategory(''));
           store.dispatch(setLoading(false));
         })
         .then(() => {
           store.dispatch(setSearchResults());
         })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.warn(error);
+        .catch(() => {
+          store.dispatch(setIfPostingIsError(true, errorMessages[0].serverError));
         });
       next(action);
       break;

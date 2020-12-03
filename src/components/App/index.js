@@ -23,12 +23,14 @@ import { getToken, verifyToken } from '../../utils/utils';
 // si non , l'afficher
 
 // == Composant
-const App = ({ isLoading, userLogged }) => {
+const App = ({ isLoading, userLogged, setLoading }) => {
   useEffect(() => {
     const token = getToken();
+    setLoading(true);
     verifyToken(token)
       .then(() => userLogged(true))
-      .catch(() => userLogged(false));
+      .catch(() => userLogged(false))
+      .finally(() => setLoading(false));
   }, []);
   return (
     <div className="app">
@@ -61,6 +63,7 @@ const App = ({ isLoading, userLogged }) => {
 App.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   userLogged: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
 };
 
 // == Export

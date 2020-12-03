@@ -9,15 +9,15 @@ export const errorMessages = [{
   },
   postingError: {
     header: 'Il y a eu un probléme',
-    content: 'Il y a eu un probléme lors de l\'ajout de votre plat, veuillez reessayer !',
+    content: 'Il y a eu un probléme lors de l\'ajout de votre plat, veuillez reessayer',
   },
   editingError: {
     header: 'Il y a eu un probléme',
-    content: 'Il y a eu un probléme lors de la modification de votre plat, veuillez reessayer !',
+    content: 'Il y a eu un probléme lors de la modification de votre plat, veuillez reessayer',
   },
   deletingError: {
     header: 'Il y a eu un probléme',
-    content: 'Il y a eu un probléme lors de la suppression de votre plat, veuillez reessayer !',
+    content: 'Il y a eu un probléme lors de la suppression de votre plat, veuillez reessayer',
   },
   serverError: {
     header: 'Il y a eu une erreur lors de la soumission',
@@ -37,5 +37,16 @@ export const successMessages = [{
   deleteSuccess: {
     header: 'Suppression éfféctuée avec succés',
     content: 'Votre plat a été Supprimé avec succés !',
+  },
+}];
+
+export const researchMessage = [{
+  searchSuccess: {
+    header: 'Résultats',
+    content: 'Votre recherche a renvoyé des resultats',
+  },
+  searchError: {
+    header: 'Pas de résultats',
+    content: 'Votre recherche n\'a pas donné de resultats',
   },
 }];

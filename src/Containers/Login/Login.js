@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   password: state.userInputPassword,
   isLogged: state.isLogged,
   logError: state.logError,
+  isLoading: state.isLoading,
 });
 
 const mapDispatchToProps = {
